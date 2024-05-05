@@ -36,20 +36,5 @@ class userInput(val judgement: judgement) {
 
         }
     }
-    private fun askForNewGame(): Boolean {
-        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
-        return when (readLine()) {
-            "1" -> true
-            else -> false
-        }
-    }
 
-    private fun generateNewAnswer(): Array<Int?> {
-        val numbers = (0..9).shuffled().take(3).toTypedArray()
-        return arrayOfNulls<Int>(3).apply {
-            numbers.forEachIndexed { index, number ->
-                this[index] = number
-            }
-        }
-    }
 }
