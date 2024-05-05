@@ -7,22 +7,17 @@ class random {
 
     fun randomNumber() {
         val set: HashSet<Int> = HashSet()
-        val list: ArrayList<Int> = ArrayList()
 
         while (set.size < 3) {
             val randomValue = Random.nextInt(1, 10)
-
             set.add(randomValue)
         }
 
-        list.addAll(set)
+        val list: ArrayList<Int> = ArrayList(set)
         list.shuffle()
 
-        val iterator = set.iterator()
         for (index in 0..2) {
-            if (iterator.hasNext()) {
-                ranNumber[index] = iterator.next()
-            }
+            ranNumber[index] = list[index]
         }
 
         fun getRanNumber(): Array<Int?> {

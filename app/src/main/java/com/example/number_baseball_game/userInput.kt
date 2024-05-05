@@ -19,10 +19,14 @@ class userInput(val judgement: judgement) {
                 userNumber[2] = inputNumber.substring(2, 3).toInt()
 
                 if (judgement.judge(userNumber, answer)) {
-                    println("정답입니다! 게임을 종료합니다.")
+                    println("정답입니다!")
                     break
+                } else if (judgement.strike == 0 && judgement.ball == 0) {
+                    println("낫싱")
+                    false
                 } else {
                     println("${judgement.strike} 스트라이크, ${judgement.ball} 볼")
+                    false
                 }
 
             } catch (e: IllegalArgumentException) {
@@ -30,6 +34,22 @@ class userInput(val judgement: judgement) {
             }
 
 
+        }
+    }
+    private fun askForNewGame(): Boolean {
+        println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+        return when (readLine()) {
+            "1" -> true
+            else -> false
+        }
+    }
+
+    private fun generateNewAnswer(): Array<Int?> {
+        val numbers = (0..9).shuffled().take(3).toTypedArray()
+        return arrayOfNulls<Int>(3).apply {
+            numbers.forEachIndexed { index, number ->
+                this[index] = number
+            }
         }
     }
 }
