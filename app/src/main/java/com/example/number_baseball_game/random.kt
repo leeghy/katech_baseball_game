@@ -10,7 +10,7 @@ class random {
         val list: ArrayList<Int> = ArrayList()
 
         while (set.size < 3) {
-            val randomValue = Random.nextInt(8) + 1
+            val randomValue = Random.nextInt(1, 10)
 
             set.add(randomValue)
         }
@@ -18,8 +18,15 @@ class random {
         list.addAll(set)
         list.shuffle()
 
-        for ((index, number: Int) in list.withIndex()) {
-            ranNumber[index] = number
+        val iterator = set.iterator()
+        for (index in 0..2) {
+            if (iterator.hasNext()) {
+                ranNumber[index] = iterator.next()
+            }
+        }
+
+        fun getRanNumber(): Array<Int?> {
+            return ranNumber
         }
     }
 }
