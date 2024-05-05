@@ -1,10 +1,10 @@
 package com.example.number_baseball_game
 
-class userInput {
+class userInput(val judgement: judgement) {
 
     val userNumber: Array<Int?> = arrayOfNulls<Int>(3)
 
-    fun userInput() {
+    fun userInput(answer: Array<Int?>, judgement: judgement) {
         while (true) {
             try {
                 print("숫자 세 개를 입력해주세요: ")
@@ -18,9 +18,17 @@ class userInput {
                 userNumber[1] = inputNumber.substring(1, 2).toInt()
                 userNumber[2] = inputNumber.substring(2, 3).toInt()
 
+                if (judgement.judge(userNumber, answer)) {
+                    println("정답입니다! 게임을 종료합니다.")
+                    break
+                } else {
+                    println("${judgement.strike} 스트라이크, ${judgement.ball} 볼")
+                }
+
             } catch (e: IllegalArgumentException) {
                 println(e.message) // 예외 메시지 출력
             }
+
 
         }
     }

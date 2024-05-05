@@ -7,8 +7,10 @@ fun main() {
     answer.randomNumber()
     println(answer.ranNumber.contentToString())
 
-    var user: userInput = userInput()
-    user.userInput()
+    var judge: judgement = judgement()
+    val user = userInput(judge)
+    user.userInput(answer.ranNumber, judge)
+    judge.judge(user.userNumber, answer.ranNumber)
 
 
 }
