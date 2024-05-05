@@ -5,7 +5,7 @@ fun main() {
     println("숫자야구 게임 시작")
     var answer: random = random()
     answer.randomNumber()
-    println(answer.ranNumber.contentToString())
+//    println(answer.ranNumber.contentToString())
 
     var judge: judgement = judgement()
     val user = userInput(judge)
